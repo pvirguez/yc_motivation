@@ -1,7 +1,7 @@
 
 const ycGroupPartner = ['Dalton', 'Michael', 'Gary'];
 
-const phrase = ['Impartiendo sabiduria', 'Dando clases', 'Preaching'];
+const phrase = ['impartiendo sabiduria', 'dando clases', 'preaching'];
 
 const ycAdvice = ["Launch now", "Build something people want", "Do things that don't scale", 
 "Find the 90 / 10 solution", "Find 10-100 customers who love your product", "All startups are badly broken at some point", 
@@ -14,5 +14,21 @@ const ycAdvice = ["Launch now", "Build something people want", "Do things that d
 "Ignore your competitors, you will more likely die of suicide than murder", "Most companies don't die because they run out of money", 
 "Be nice! Or at least don't be a jerk", "Get sleep and exercise - take care of yourself"];
 
+let lastGroupPartnerIndex = Math.floor(Math.random() * ycGroupPartner.length);
+let lastPhraseIndex = Math.floor(Math.random() * phrase.length);
+let lastAdviceIndex = Math.floor(Math.random() * ycAdvice.length);
 
-console.log(ycAdvice);
+function generateRandomMessage() {
+  const randomGroupPartner = ycGroupPartner[lastGroupPartnerIndex];
+  lastGroupPartnerIndex = (lastGroupPartnerIndex + 1) % ycGroupPartner.length;
+
+  const randomPhrase = phrase[lastPhraseIndex];
+  lastPhraseIndex = (lastPhraseIndex + 1) % phrase.length;
+
+  const randomAdvice = ycAdvice[lastAdviceIndex];
+  lastAdviceIndex = (lastAdviceIndex + 1) % ycAdvice.length;
+
+  return `${randomGroupPartner} está ${randomPhrase}: ${randomAdvice}.`;
+}
+
+console.log(generateRandomMessage());
